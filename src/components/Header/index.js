@@ -14,27 +14,20 @@ import {
   timing,
   usePanGestureHandler,
 } from "react-native-redash/lib/module/v1";
-import { Feather } from '@expo/vector-icons'; 
-import { PanGestureHandler, State } from "react-native-gesture-handler";
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { State } from "react-native-gesture-handler";
 import {
   Container,
   HeaderContent,
   AccountInfo,
   LeftSide,
-  AccountBalanceLabel,
   AccountBalanceRow,
   AccountBalance,
-  AccountBalanceCurrency,
   AccountBalanceValue,
-  VisibilityToggle,
   AccountBalanceInfo,
-  RightSide,
   Avatar,
-  Initials,
   SideIndicator,
-  ActiveIndicator,
-  LeftEmptyIndicator,
-  RightEmptyIndicator,
+  ActiveIndicator
 } from "./styles";
 
 const { width } = Dimensions.get("window");
@@ -93,55 +86,18 @@ export default function Header() {
                 }),
               }}
             >
-              <AccountBalanceLabel>Saldo em conta</AccountBalanceLabel>
               <AccountBalanceRow>
                 <AccountBalance>
-                  <AccountBalanceCurrency>R$</AccountBalanceCurrency>
-                  <AccountBalanceValue>0,00</AccountBalanceValue>
+                  <AccountBalanceValue>Bombeiro Civil Operacional</AccountBalanceValue>
                 </AccountBalance>
-                <VisibilityToggle
-                  onPress={() => setBalanceIsVisible(!balanceIsVisible)}
-                >
-                  {balanceIsVisible ? (
-                    <Feather name="eye" size={32} color="#fff" />
-                  ) : (
-                    <Feather name="eye-off" size={32} color="#fff" />
-                  )}
-                </VisibilityToggle>
               </AccountBalanceRow>
-              <AccountBalanceInfo>Atualizado neste momento</AccountBalanceInfo>
+              <AccountBalanceInfo>O aplicativo do BPC</AccountBalanceInfo>
             </LeftSide>
-            <RightSide
-              style={{
-                opacity: accountInfoTranslateX.interpolate({
-                  inputRange: [(-width - 20) * 0.5, 0],
-                  outputRange: [1, 0],
-                  extrapolate: Extrapolate.CLAMP,
-                }),
-              }}
-            >
-              <AccountBalanceLabel>Total investido</AccountBalanceLabel>
-              <AccountBalanceRow>
-                <AccountBalance>
-                  <AccountBalanceCurrency>R$</AccountBalanceCurrency>
-                  <AccountBalanceValue>0,00</AccountBalanceValue>
-                </AccountBalance>
-                <VisibilityToggle
-                  onPress={() => setBalanceIsVisible(!balanceIsVisible)}
-                >
-                  {balanceIsVisible ? (
-                    <Feather name="eye" size={32} color="#fff" />
-                  ) : (
-                    <Feather name="eye-off" size={32} color="#fff" />
-                  )}
-                </VisibilityToggle>
-              </AccountBalanceRow>
-              <AccountBalanceInfo>Atualizado neste momento</AccountBalanceInfo>
-            </RightSide>
           </AccountInfo>
           <Avatar>
-          {/*<Avatar onPress={() => signOut()}>*/}
-          <Initials>ID</Initials>
+          <MaterialCommunityIcons name="fire" size={40} color="#ff500f" />
+          {/*<Avatar onPress={() => signOut()}>          
+          <Initials>ID</Initials>*/}
         </Avatar>
         </HeaderContent>
         <SideIndicator>
@@ -158,14 +114,7 @@ export default function Header() {
             ],
           }}
         >
-          <Feather name="minus" size={30} color="#fff" />
         </ActiveIndicator>
-        <LeftEmptyIndicator>
-          <Feather name="minus" size={30} color="rgba(255, 255, 255, 0.3)" />
-        </LeftEmptyIndicator>
-        <RightEmptyIndicator>
-          <Feather name="minus" size={30} color="rgba(255, 255, 255, 0.3)" />
-        </RightEmptyIndicator>
       </SideIndicator>
       </Container>
     );
